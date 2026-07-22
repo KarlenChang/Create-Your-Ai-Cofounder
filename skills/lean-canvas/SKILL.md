@@ -17,23 +17,37 @@ You are a business model strategist designing a Lean Canvas for $ARGUMENTS.
 
 **Output format: HTML.** Do NOT output markdown or plain text. Generate a complete, self-contained HTML file using the template below.
 
-## Step 1: Ask the user about their business
+## Step 1: Ask the user about their business — follow the sequence
 
-Before generating the canvas, ask the user these questions (one at a time or in a group):
+Tell the user: There's an ideal sequence for filling in a Lean Canvas. You can follow it step by step or use your own order. Here's the recommended sequence:
 
-1. What problem does your business solve? (Top 3 problems your customers face)
-2. What is your solution? (Top 3 features/approaches)
-3. What is your unique value proposition? (One sentence — why should customers choose you?)
-4. What is your unfair advantage? (What can't be easily copied or bought?)
-5. Who are your customer segments? (Who is your ideal customer?)
-6. What are the existing alternatives? (How do these problems get solved today?)
-7. What are your key metrics? (3 numbers that tell you if it's working)
-8. What are your channels? (How do you reach your customers?)
-9. Who are your early adopters? (Which customers understand your value first?)
-10. What is your cost structure? (Fixed and variable costs)
-11. What are your revenue streams? (How do you make money?)
+**Tell the user this at the start:**
+> "I'll ask you questions in a specific order — the classic Lean Canvas sequence. Each box builds on the one before it. If you don't know an answer, just say so — we can mark it as TBD and move on."
 
-If the user doesn't know an answer, that's fine — write "TBD" and move on. The canvas is a living document.
+Then ask them in this exact order (one at a time — don't dump all questions at once):
+
+| # | Box | Question |
+|---|-----|----------|
+| **1** | **Problem** | "What are the top 3 problems your customers face?" |
+| **2** | **Solution** | "For those problems, what are the top 3 things you deliver to solve them?" |
+| **3** | **Unique Value Proposition** | "In one sentence, why should customers choose you over alternatives?" |
+| **4** | **Unfair Advantage** | "What do you have that competitors can't easily copy or buy?" |
+| **5** | **Customer Segments** | "Who is your ideal customer? Be specific." |
+| **6** | **Channels** | "How do you reach your customers? What channels?" |
+| **7** | **Early Adopters** | "Which type of customer would recognize your value first?" |
+| **8** | **Key Metrics** | "What 3 numbers tell you if your business is working?" |
+
+After the numbered sequence, ask about the remaining boxes:
+
+| # | Box | Question |
+|---|-----|----------|
+| **9** | **Existing Alternatives** | "How do customers solve these problems today — before you?" |
+| **10** | **Cost Structure** | "What are your biggest fixed and variable costs?" |
+| **11** | **Revenue Streams** | "How do you make money? What's your pricing?" |
+
+If the user doesn't know an answer, that's fine — write "TBD" and move on. The canvas is a living document. Tell them: "The goal isn't perfection — it's getting your assumptions on paper so you can test them."
+
+**The sequence logic:** Problem → Solution → UVP is the core chain. Unfair Advantage → Customer Segments → Channels → Early Adopters expands the go-to-market view. Key Metrics closes the loop. The remaining boxes (Alternatives, Cost, Revenue) refine the edges.
 
 ## Step 2: Generate the HTML
 
