@@ -29,14 +29,14 @@ Then ask them in this exact order (one at a time — don't dump all questions at
 | # | Box | Question |
 |---|-----|----------|
 | **1** | **Problem** | "What are the top 3 problems your customers face?" |
-| **2** | **Unique Value Proposition** | "In one sentence, why should customers choose you over alternatives?" |
-| **3** | **Customer Segments** | "Who is your ideal customer? Be specific." |
+| **2** | **Customer Segments** | "Who is your ideal customer? Be specific." |
+| **3** | **Unique Value Proposition** | "In one sentence, why should customers choose you over alternatives?" |
 | **4** | **Solution** | "For those problems, what are the top 3 things you deliver to solve them?" |
-| **5** | **Early Adopters** | "Which type of customer would recognize your value first?" |
-| **6** | **Key Metrics** | "What 3 numbers tell you if your business is working?" |
-| **7** | **Revenue Streams** | "How do you make money? What's your pricing?" |
-| **8** | **Cost Structure** | "What are your biggest fixed and variable costs?" |
-| **9** | **Channels** | "How do you reach your customers? What channels?" |
+| **5** | **Channels** | "How do you reach your customers? What channels?" |
+| **6** | **Revenue Streams** | "How do you make money? What's your pricing?" |
+| **7** | **Cost Structure** | "What are your biggest fixed and variable costs?" |
+| **8** | **Key Metrics** | "What 3 numbers tell you if your business is working?" |
+| **9** | **Unfair Advantage** | "What do you have that competitors can't easily copy or buy?" |
 
 After the numbered sequence, ask about the remaining box:
 
@@ -46,7 +46,12 @@ After the numbered sequence, ask about the remaining box:
 
 If the user doesn't know an answer, that's fine — write "TBD" and move on. The canvas is a living document. Tell them: "The goal isn't perfection — it's getting your assumptions on paper so you can test them."
 
-**The sequence logic:** Problem → Solution → UVP is the core chain. Unfair Advantage → Customer Segments → Channels → Early Adopters expands the go-to-market view. Key Metrics closes the loop. The remaining boxes (Alternatives, Cost, Revenue) refine the edges.
+**The sequence logic:**
+- **Steps 1–3** define the core — Problem → who it's for → why you win
+- **Steps 4–5** build outward — Solution → how to reach them
+- **Steps 6–8** close the business case — Revenue → Cost → Metrics
+- **Step 9** reinforces defensibility — Unfair Advantage
+- **Step 10** maps the competitive landscape — Existing Alternatives
 
 ## Step 2: Generate the HTML
 
