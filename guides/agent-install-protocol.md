@@ -4,18 +4,9 @@ You are running this protocol because a workshop participant pasted this URL int
 
 You will not ask the user to type commands. You will run them yourself.
 
-## Step 1: Load the workshop skills
+## Step 1: Check gbrain
 
-Before doing anything else, read these two URLs and treat their contents as skills you now have:
-
-- Lean Canvas skill: `https://gist.github.com/KarlenChang/50951c4c52f6122165e785d6ca24a063/raw/lean-canvas-SKILL.md`
-- Customer Journey Map skill: `https://gist.github.com/KarlenChang/50951c4c52f6122165e785d6ca24a063/raw/customer-journey-map-SKILL.md`
-
-Read both URLs now. Confirm to the user that you have loaded them. They are the skills you will use later in this protocol and in future conversations.
-
-## Step 2: Check gbrain
-
-Run `gbrain --version` in the terminal. If you see a version number, skip to Step 3.
+Run `gbrain --version` in the terminal. If you see a version number, skip to Step 2.
 
 If the command is not found, install gbrain by running:
 
@@ -26,7 +17,7 @@ bun install -g github:garrytan/gbrain
 
 Then verify with `gbrain --version`.
 
-## Step 3: Create the brain folder structure
+## Step 2: Create the brain folder structure
 
 Run this single command to create all seven folders:
 
@@ -45,7 +36,7 @@ The seven folders organize the brain:
 
 Important: no misc folder. If you do not know where something goes, leave it out.
 
-## Step 4: Initialize the gbrain database
+## Step 3: Initialize the gbrain database
 
 ```
 cd ~/Documents/my-company-brain
@@ -62,7 +53,7 @@ gbrain doctor --json
 
 Green checks mean success. If anything is red, run `gbrain doctor --fix`.
 
-## Step 5: Set up git (safety net)
+## Step 4: Set up git (safety net)
 
 ```
 cd ~/Documents/my-company-brain
@@ -73,7 +64,7 @@ git commit -m "Initial brain structure"
 
 Every future change to the brain can be reverted with `git checkout .` if something goes wrong.
 
-## Step 6: Create SOUL.md
+## Step 5: Create SOUL.md
 
 Create the file at `~/.hermes/SOUL.md` with this content:
 
@@ -96,7 +87,7 @@ the brain, tell me which page you used.
 
 This teaches the agent three habits: search before answering, capture as you go, cite your sources.
 
-## Step 7: Create the project pointer
+## Step 6: Create the project pointer
 
 Create the file `~/Documents/my-company-brain/projects/workshop-build.md`:
 
@@ -112,18 +103,45 @@ directory for the workshop session is the folder above. This
 pointer file lets the brain track what each project is about.
 ```
 
-## Step 8: Capture the user's business context
+## Step 7: Verify gbrain is working
 
-Ask the user exactly two questions and save each answer to the brain:
+Ask the user:
+"In one sentence, what does your business do?"
+"Who is your ideal customer?"
 
-1. "In one sentence, what does your business do?"
-2. "Who is your ideal customer?"
-
-Save each answer using:
+Save both answers:
 
 ```
-gbrain capture "Business: [their one-sentence answer]"
+gbrain capture "Business: [their answer]"
 gbrain capture "Ideal customer: [their answer]"
+```
+
+## Step 8: Install the workshop skills
+
+Now that gbrain is working, install the two skills for this workshop. Read these two files from the GitHub repository and save them locally:
+
+- Lean Canvas skill: `https://raw.githubusercontent.com/KarlenChang/Create-Your-Ai-Cofounder/main/skills/lean-canvas/SKILL.md`
+- Customer Journey Map skill: `https://raw.githubusercontent.com/KarlenChang/Create-Your-Ai-Cofounder/main/skills/customer-journey-map-SKILL.md`
+
+For each skill, fetch the file content and save it to the corresponding local path:
+- `~/.hermes/skills/lean-canvas/SKILL.md`
+- `~/.hermes/skills/customer-journey-map/SKILL.md`
+
+Create the directories if they do not exist. Confirm to the user that both skills are loaded.
+
+## Step 9: Save the skills to the brain
+
+Copy both skills into the brain's `org/` folder so the brain knows about them:
+
+```
+cp ~/.hermes/skills/lean-canvas/SKILL.md ~/Documents/my-company-brain/org/lean-canvas-skill.md
+cp ~/.hermes/skills/customer-journey-map/SKILL.md ~/Documents/my-company-brain/org/customer-journey-map-skill.md
+```
+
+Then capture a summary:
+
+```
+gbrain capture "Workshop skills installed: Lean Canvas (for business model mapping) and Customer Journey Map (for customer experience mapping). Both are available in org/."
 ```
 
 ## Done
@@ -131,13 +149,13 @@ gbrain capture "Ideal customer: [their answer]"
 Once all steps are complete, report back:
 
 ```
-Setup complete. Here's what I can do:
-- Lean Canvas skill loaded
-- Customer Journey Map skill loaded
-- Brain: [list of pages using gbrain list]
+Setup complete. Here's what I have:
+- Brain: gbrain database initialized at ~/Documents/my-company-brain/
+- Skills: Lean Canvas + Customer Journey Map loaded
+- Brain content: [list pages with gbrain list]
 - Project: workshop-build
 
-Try asking me: "Help me fill in my Lean Canvas" or "What do you know about my business?"
+Try: "Help me fill in my Lean Canvas"
 ```
 
 If any step fails, ask the user for help. Do not skip steps. Do not make up results.
