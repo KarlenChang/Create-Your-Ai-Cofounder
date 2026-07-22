@@ -1,95 +1,65 @@
 ---
 name: lean-canvas
-description: "Generate a Lean Canvas as an HTML document using the classic Ash Maurya layout. Use when exploring a lean startup canvas, testing a business hypothesis, or modeling a new venture."
-source: "Forked from phuryn/pm-skills — rewritten to output HTML"
+description: "Lean Canvas skill — fill out a new canvas or pressure-test an existing one. Use when the user says lean canvas, business model, fill in my canvas, or pressure test my canvas."
+source: "Forked from phuryn/pm-skills — rewritten with progressive disclosure"
 ---
 
 # Lean Canvas
 
 ## Metadata
 - **Name**: lean-canvas
-- **Description**: Generate a Lean Canvas business model as a visual HTML document
-- **Triggers**: lean canvas, startup canvas, lean model, business hypothesis, fill in my canvas, business model
+- **Description**: Lean Canvas business model tool — fill or pressure-test
+- **Triggers**: lean canvas, startup canvas, lean model, business hypothesis, fill in my canvas, business model, pressure test my canvas, stress test my canvas
 
 ## Instructions
 
-You are a business model strategist designing a Lean Canvas for $ARGUMENTS.
+You are a business model strategist working with the user on their Lean Canvas.
 
-**Output format: HTML.** Do NOT output markdown or plain text. Generate a complete, self-contained HTML file using the template below.
+**Output format: HTML.** Always generate a self-contained HTML file using the template at `templates/lean-canvas.html` in the workshop repository.
 
-## Step 1: Ask the user about their business — follow the sequence
+---
 
-Tell the user: There's an ideal sequence for filling in a Lean Canvas. You can follow it step by step or use your own order. Here's the recommended sequence:
+## Two Scenarios
 
-**Tell the user this at the start:**
-> "I'll ask you questions in a specific order — the classic Lean Canvas fill sequence. Each box builds on the one before it. If you don't know an answer, just say so — we can mark it as TBD and move on."
+Detect which scenario the user needs and follow the corresponding path. Do NOT run both paths at once.
 
-Then ask them in this exact order (one at a time — don't dump all questions at once):
+### Scenario 1: "I don't have a Lean Canvas yet" (or implied)
 
-| # | Box | Question |
-|---|-----|----------|
-| **1** | **Problem** | "What are the top 3 problems your customers face?" |
-| **2** | **Customer Segments** | "Who is your ideal customer? Be specific." |
-| **3** | **Unique Value Proposition** | "In one sentence, why should customers choose you over alternatives?" |
-| **4** | **Solution** | "For those problems, what are the top 3 things you deliver to solve them?" |
-| **5** | **Channels** | "How do you reach your customers? What channels?" |
-| **6** | **Revenue Streams** | "How do you make money? What's your pricing?" |
-| **7** | **Cost Structure** | "What are your biggest fixed and variable costs?" |
-| **8** | **Key Metrics** | "What 3 numbers tell you if your business is working?" |
-| **9** | **Unfair Advantage** | "What do you have that competitors can't easily copy or buy?" |
+The user needs to create a new canvas. Load `references/fill-order.md` for the step-by-step sequence and question script.
 
-After the numbered sequence, ask about the remaining box:
+**Flow:**
+1. Load the fill-order reference
+2. Ask questions one at a time in the numbered sequence (1–10)
+3. Generate the HTML with their answers
+4. Save to brain: `~/Documents/my-company-brain/org/lean-canvas.html`
+5. Capture summary to gbrain
 
-| # | Box | Question |
-|---|-----|----------|
-| **10** | **Existing Alternatives** | "How do customers solve these problems today — before you?" |
+### Scenario 2: "I already have a Lean Canvas" (or "pressure test", "stress test", "analyze")
 
-If the user doesn't know an answer, that's fine — write "TBD" and move on. The canvas is a living document. Tell them: "The goal isn't perfection — it's getting your assumptions on paper so you can test them."
+The user has a canvas and wants to pressure-test it. Load `references/risk-iteration-path.md` for the risk chains and testing approach.
 
-**The sequence logic:**
-- **Steps 1–3** define the core — Problem → who it's for → why you win
-- **Steps 4–5** build outward — Solution → how to reach them
-- **Steps 6–8** close the business case — Revenue → Cost → Metrics
-- **Step 9** reinforces defensibility — Unfair Advantage
-- **Step 10** maps the competitive landscape — Existing Alternatives
+**Flow:**
+1. Load the risk-iteration-path reference
+2. Identify which risk chain to start with (ask the user, or default to Product Risk if they're unsure)
+3. Walk through the chain step by step, asking probing questions at each box
+4. Output findings as an HTML report or annotated canvas
+5. Save to brain
 
-## Step 2: Generate the HTML
+---
 
-Use the HTML template at `templates/lean-canvas.html` in the workshop repository. Fill in each section with the user's answers.
+## HTML Template
 
-Save the completed HTML file to the user's workspace or brain folder. Suggest the path: `~/Documents/my-company-brain/org/lean-canvas.html`
+The template is at: `templates/lean-canvas.html`
 
-## Step 3: Save to the brain
-
-After generating the HTML, save a summary to the brain:
-
-```
-gbrain capture "Lean Canvas created for [business name]. Saved as HTML at [path]. Key UVP: [their UVP]. Top problem: [their #1 problem]."
-```
-
-## The HTML Layout
-
-The Lean Canvas has this structure (matching Ash Maurya's original layout):
-
-```
-┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
-│   PROBLEM    │   SOLUTION   │     UVP      │    UNFAIR    │   CUSTOMER   │
-│              │              │   (spans     │   ADVANTAGE  │   SEGMENTS   │
-│              │              │   2 rows)    │              │              │
-├──────────────┼──────────────┤              ├──────────────┼──────────────┤
-│   EXISTING   │     KEY      │              │   CHANNELS   │    EARLY     │
-│ ALTERNATIVES │   METRICS    │              │              │   ADOPTERS   │
-├──────────────┴──────────────┴──────────────┴──────────────┴──────────────┤
-│                        COST STRUCTURE        │      REVENUE STREAMS     │
-└──────────────────────────────────────────────┴──────────────────────────┘
-```
-
-The template is at: `https://raw.githubusercontent.com/KarlenChang/Create-Your-Ai-Cofounder/main/templates/lean-canvas.html`
+It has:
+- Classic Ash Maurya 5-column layout (UVP spans 2 rows)
+- Fill order numbers (●1 through ●10) on each box
+- Sequence reference bar at the bottom
+- Print-ready, self-contained HTML
 
 ## Notes
 - The Lean Canvas is designed for rapid hypothesis testing
 - Focus on addressing the riskiest assumptions first
 - Update the canvas as you learn and validate
 - Each section should be specific and measurable where possible
-- The HTML output is visual and can be opened in any browser
 - Lean Canvas (Ash Maurya) replaces Partners/Activities/Resources with Problem/Solution/Unfair Advantage
