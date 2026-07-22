@@ -1,103 +1,77 @@
 ---
 name: lean-canvas
-description: "Generate a Lean Canvas with problem, solution, metrics, cost structure, UVP, unfair advantage, channels, segments, and revenue. Use when exploring a lean startup canvas, testing a business hypothesis, or modeling a new venture."
-source: "Forked from phuryn/pm-skills — marketing language removed"
+description: "Generate a Lean Canvas as an HTML document using the classic Ash Maurya layout. Use when exploring a lean startup canvas, testing a business hypothesis, or modeling a new venture."
+source: "Forked from phuryn/pm-skills — rewritten to output HTML"
 ---
 
 # Lean Canvas
 
 ## Metadata
 - **Name**: lean-canvas
-- **Description**: Generate a Lean Canvas business model with detailed sections for problem, solution, metrics, cost structure, UVP, unfair advantage, channels, segments, and revenue.
-- **Triggers**: lean canvas, startup canvas, lean model, business hypothesis
+- **Description**: Generate a Lean Canvas business model as a visual HTML document
+- **Triggers**: lean canvas, startup canvas, lean model, business hypothesis, fill in my canvas, business model
 
 ## Instructions
 
 You are a business model strategist designing a Lean Canvas for $ARGUMENTS.
 
-Your task is to create a comprehensive Lean Canvas that outlines the business hypothesis and key business model assumptions for the product.
+**Output format: HTML.** Do NOT output markdown or plain text. Generate a complete, self-contained HTML file using the template below.
 
-## Input Requirements
-- Product or feature description
-- Target customer segment(s)
-- Market context and problem space
-- Any available metrics or business constraints
+## Step 1: Ask the user about their business
 
-## Lean Canvas Template
+Before generating the canvas, ask the user these questions (one at a time or in a group):
 
-### Section 1: Product Definition
+1. What problem does your business solve? (Top 3 problems your customers face)
+2. What is your solution? (Top 3 features/approaches)
+3. What is your unique value proposition? (One sentence — why should customers choose you?)
+4. What is your unfair advantage? (What can't be easily copied or bought?)
+5. Who are your customer segments? (Who is your ideal customer?)
+6. What are the existing alternatives? (How do these problems get solved today?)
+7. What are your key metrics? (3 numbers that tell you if it's working)
+8. What are your channels? (How do you reach your customers?)
+9. Who are your early adopters? (Which customers understand your value first?)
+10. What is your cost structure? (Fixed and variable costs)
+11. What are your revenue streams? (How do you make money?)
 
-**1. Problem**
-- Top 3 customer problems or needs
-- Customer pains and frustrations
-- Current unsatisfactory solutions
+If the user doesn't know an answer, that's fine — write "TBD" and move on. The canvas is a living document.
 
-**2. Solution**
-- Top 3 features or approaches
-- How each feature addresses the problem
-- Why this solution is novel or better
+## Step 2: Generate the HTML
 
-**3. Unique Value Proposition (UVP)**
-- Concise, memorable statement
-- Why customers choose you over alternatives
-- What makes you different (not just "better")
+Use the HTML template at `templates/lean-canvas.html` in the workshop repository. Fill in each section with the user's answers.
 
-**4. Unfair Advantage**
-- What defensibility exists?
-- Barriers to competition (network effects, brand, IP, switching costs)
-- What competitors can't easily replicate
+Save the completed HTML file to the user's workspace or brain folder. Suggest the path: `~/Documents/my-company-brain/org/lean-canvas.html`
 
-### Section 2: Market & Traction
+## Step 3: Save to the brain
 
-**5. Customer Segments**
-- Who is the target customer?
-- Early adopters and first segment
-- Customer personas or archetypes
-- How large is the addressable market?
+After generating the HTML, save a summary to the brain:
 
-**6. Channels**
-- How do you reach customers?
-- Primary acquisition channels
-- Distribution and sales approach
-- How do customers find you?
+```
+gbrain capture "Lean Canvas created for [business name]. Saved as HTML at [path]. Key UVP: [their UVP]. Top problem: [their #1 problem]."
+```
 
-**7. Revenue Streams**
-- How do you make money?
-- Pricing model or revenue per customer
-- Customer lifetime value (LTV)
-- Revenue growth assumptions
+## The HTML Layout
 
-### Section 3: Economics & Validation
+The Lean Canvas has this structure (matching Ash Maurya's original layout):
 
-**8. Cost Structure**
-- Fixed costs (salaries, infrastructure, facilities)
-- Variable costs (COGS, transaction costs, support)
-- Key cost drivers
-- Cost per customer acquisition (CAC)
+```
+┌──────────────┬──────────────┬──────────────┬──────────────┬──────────────┐
+│   PROBLEM    │   SOLUTION   │     UVP      │    UNFAIR    │   CUSTOMER   │
+│              │              │   (spans     │   ADVANTAGE  │   SEGMENTS   │
+│              │              │   2 rows)    │              │              │
+├──────────────┼──────────────┤              ├──────────────┼──────────────┤
+│   EXISTING   │     KEY      │              │   CHANNELS   │    EARLY     │
+│ ALTERNATIVES │   METRICS    │              │              │   ADOPTERS   │
+├──────────────┴──────────────┴──────────────┴──────────────┴──────────────┤
+│                        COST STRUCTURE        │      REVENUE STREAMS     │
+└──────────────────────────────────────────────┴──────────────────────────┘
+```
 
-**9. Key Metrics**
-- Activation: How do users get value quickly?
-- Retention: How many users stick around?
-- Revenue: How do we measure financial success?
-- North Star metric for the business
-
-## Output Process
-1. Define the core problem(s) being solved
-2. Outline 2-3 solution approaches
-3. Craft a compelling UVP
-4. Identify what creates competitive advantage
-5. Target 1-2 customer segments
-6. Map acquisition channels
-7. Define revenue model and pricing
-8. Estimate cost structure
-9. Identify 3-5 critical metrics to track
-10. Surface key assumptions and hypotheses
-11. Suggest validation experiments (landing page, interviews, MVP)
+The template is at: `https://raw.githubusercontent.com/KarlenChang/Create-Your-Ai-Cofounder/main/templates/lean-canvas.html`
 
 ## Notes
 - The Lean Canvas is designed for rapid hypothesis testing
 - Focus on addressing the riskiest assumptions first
 - Update the canvas as you learn and validate
 - Each section should be specific and measurable where possible
-- This canvas helps align founding teams on business strategy
-- Lean Canvas (Ash Maurya) is a startup-focused adaptation of the Business Model Canvas that replaces Partners/Activities/Resources with Problem/Solution/Unfair Advantage
+- The HTML output is visual and can be opened in any browser
+- Lean Canvas (Ash Maurya) replaces Partners/Activities/Resources with Problem/Solution/Unfair Advantage
