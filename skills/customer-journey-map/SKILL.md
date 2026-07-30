@@ -6,6 +6,17 @@ source: "Forked from phuryn/pm-skills"
 
 # Customer Journey Map
 
+## Output Format
+
+**Always generate two files:**
+
+1. **HTML file** — `customer-journey-map.html` — visual grid, self-contained, print-ready. Use the template at `templates/customer-journey-map.html`.
+2. **Markdown file** — `customer-journey-map.md` — structured text version. Use the template at `templates/customer-journey-map-template.md`.
+
+The HTML is what they look at. The markdown is what the agent reads and searches. Both must contain the same data.
+
+Save both to: `~/Documents/my-company-brain/org/`
+
 Map the end-to-end customer experience from awareness through advocacy, identifying emotions, pain points, and improvement opportunities at each stage.
 
 ## Context
@@ -102,3 +113,15 @@ After the full map is built:
  - What requires deeper investment but has the biggest payoff?
 
 Think step by step. Save as a markdown document.
+
+---
+
+## Final Output
+
+When the journey map is complete, generate **both files**:
+
+1. **`customer-journey-map.html`** — Fill in the HTML template with all data. Each cell in the grid gets the corresponding content. The visual grid is what the user reviews.
+2. **`customer-journey-map.md`** — Fill in the markdown template with the same data. This is the searchable, agent-readable version.
+
+Tell the user:
+> "I've saved your journey map in two formats — an HTML file you can open in your browser to see the full grid, and a markdown file your AI co-founder can search and reference."

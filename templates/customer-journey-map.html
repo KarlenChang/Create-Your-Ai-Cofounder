@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Journey Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  
+  :root {
+    --bg: #096C9A;
+    --paper: #FFFFFF;
+    --ink: #030711;
+    --ink-mute: #6B7280;
+    --accent: #7DD3E8;
+    --accent-2: #60A5FA;
+    --danger: #FCA5A5;
+    --gap: #F59E0B;
+    --gap-soft: rgba(245,158,11,0.08);
+    --rule: rgba(255,255,255,0.15);
+    --fd: 'Plus Jakarta Sans', sans-serif;
+    --fm: 'JetBrains Mono', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  html, body {
+    font-family: var(--fd);
+    background: var(--bg);
+    color: var(--paper);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 32px;
+  }
+  .header .eyebrow {
+    font-family: var(--fm);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .header .subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    max-width: 700px;
+  }
+
+  /* Persona section */
+  .persona {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .persona-field label {
+    display: block;
+    font-family: var(--fm);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .persona-field .value {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    min-height: 48px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 4px;
+  }
+
+  /* CJM Grid */
+  .cjm-grid {
+    display: grid;
+    grid-template-columns: 100px repeat(7, 1fr);
+    gap: 3px;
+    margin-bottom: 40px;
+  }
+
+  /* Row labels */
+  .row-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-family: var(--fm);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* Stage headers */
+  .stage-head {
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(125,211,232,0.22), rgba(125,211,232,0.08));
+    border: 1px solid rgba(125,211,232,0.50);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .stage-head .num {
+    font-family: var(--fm);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.8;
+  }
+  .stage-head .name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  /* Grid cells */
+  .cell {
+    padding: 12px 14px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    min-height: 80px;
+  }
+  .cell-label {
+    font-family: var(--fm);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.6;
+  }
+  .cell-content {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .cell-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .cell-content ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 3px;
+  }
+  .cell-content ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Cell type styles */
+  .cell.touch { background: rgba(255,255,255,0.04); border-color: var(--rule); }
+  .cell.action { background: rgba(255,255,255,0.02); border-color: var(--rule); }
+  .cell.think { background: rgba(255,255,255,0.02); border-color: var(--rule); }
+  .cell.feel { background: rgba(255,255,255,0.02); border-color: var(--rule); }
+  .cell.pain { background: rgba(252,165,165,0.08); border-color: rgba(252,165,165,0.25); }
+  .cell.pain .cell-label { color: var(--danger); }
+  .cell.opp { background: rgba(125,211,232,0.06); border-color: rgba(125,211,232,0.20); }
+  .cell.opp .cell-label { color: var(--accent); }
+
+  /* Critical Moments */
+  .critical {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .critical-card {
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+  .critical-card .label {
+    font-family: var(--fm);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .critical-card .value {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    min-height: 48px;
+  }
+
+  /* Opportunities */
+  .opportunities {
+    padding: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    margin-bottom: 32px;
+  }
+  .opportunities h3 {
+    font-family: var(--fm);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .opportunities .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .opp-item .opp-label {
+    font-family: var(--fm);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+  .opp-item .opp-value {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    min-height: 40px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 16px;
+    font-family: var(--fm);
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* Print */
+  @media print {
+    html, body { background: var(--bg); }
+    .page { padding: 20px; }
+    .cell { min-height: 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">Customer Journey Map</div>
+    <h1>YOUR COMPANY NAME</h1>
+    <div class="subtitle">Map where your customer shows up, what they do, and where things break down.</div>
+  </div>
+
+  <!-- Persona -->
+  <div class="persona">
+    <div class="persona-field">
+      <label>Who are they?</label>
+      <div class="value"><!-- Name, role, industry --></div>
+    </div>
+    <div class="persona-field">
+      <label>Job to be done</label>
+      <div class="value"><!-- What are they trying to accomplish? --></div>
+    </div>
+    <div class="persona-field">
+      <label>Starting point</label>
+      <div class="value"><!-- What do they already know or have? --></div>
+    </div>
+  </div>
+
+  <!-- CJM Grid -->
+  <div class="cjm-grid">
+    <!-- Header row: empty corner + 7 stage headers -->
+    <div></div>
+    <div class="stage-head"><div class="num">Stage 1</div><div class="name">Awareness</div></div>
+    <div class="stage-head"><div class="num">Stage 2</div><div class="name">Consideration</div></div>
+    <div class="stage-head"><div class="num">Stage 3</div><div class="name">Acquisition</div></div>
+    <div class="stage-head"><div class="num">Stage 4</div><div class="name">Onboarding</div></div>
+    <div class="stage-head"><div class="num">Stage 5</div><div class="name">Engagement</div></div>
+    <div class="stage-head"><div class="num">Stage 6</div><div class="name">Retention</div></div>
+    <div class="stage-head"><div class="num">Stage 7</div><div class="name">Advocacy</div></div>
+
+    <!-- Row: Touchpoints -->
+    <div class="row-label">Touchpoints</div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="cell touch"><div class="cell-content"></div></div>
+
+    <!-- Row: User Actions -->
+    <div class="row-label">Actions</div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell action"><div class="cell-content"></div></div>
+
+    <!-- Row: Thinking -->
+    <div class="row-label">Thinking</div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell think"><div class="cell-content"></div></div>
+
+    <!-- Row: Feeling -->
+    <div class="row-label">Feeling</div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell feel"><div class="cell-content"></div></div>
+
+    <!-- Row: Pain Points -->
+    <div class="row-label">Pain Points</div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="cell pain"><div class="cell-content"></div></div>
+
+    <!-- Row: Opportunity -->
+    <div class="row-label">Opportunity</div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="cell opp"><div class="cell-content"></div></div>
+  </div>
+
+  <!-- Critical Moments -->
+  <div class="critical">
+    <div class="critical-card">
+      <div class="label">Aha Moment</div>
+      <div class="value"><!-- When do they first experience core value? --></div>
+    </div>
+    <div class="critical-card">
+      <div class="label">Moment of Truth</div>
+      <div class="value"><!-- Where do they decide to stay or leave? --></div>
+    </div>
+    <div class="critical-card">
+      <div class="label">Churn Trigger</div>
+      <div class="value"><!-- Where do people most commonly drop off? --></div>
+    </div>
+  </div>
+
+  <!-- Opportunities -->
+  <div class="opportunities">
+    <h3>Prioritized Improvements</h3>
+    <div class="opp-grid">
+      <div class="opp-item">
+        <div class="opp-label">Quick Win</div>
+        <div class="opp-value"><!-- What can you fix immediately? --></div>
+      </div>
+      <div class="opp-item">
+        <div class="opp-label">Biggest Gap</div>
+        <div class="opp-value"><!-- Where is the experience weakest? --></div>
+      </div>
+      <div class="opp-item">
+        <div class="opp-label">Biggest Opportunity</div>
+        <div class="opp-value"><!-- Where's the most untapped potential? --></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Customer Journey Map · Generated by AI Co-Founder</div>
+
+</div>
+</body>
+</html>
