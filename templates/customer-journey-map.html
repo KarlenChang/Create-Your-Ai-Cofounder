@@ -10,9 +10,11 @@
   :root {
     --bg: #096C9A;
     --white: #FFFFFF;
-    --red: #FCA5A5;
-    --rule: rgba(255,255,255,0.20);
-    --muted: rgba(255,255,255,0.50);
+    --ink: #030711;
+    --muted: #6B7280;
+    --rule: #E5E7EB;
+    --red: #FEE2E2;
+    --red-text: #B91C1C;
     --fd: 'Plus Jakarta Sans', sans-serif;
     --fm: 'JetBrains Mono', monospace;
   }
@@ -22,7 +24,7 @@
   html, body {
     font-family: var(--fd);
     background: var(--bg);
-    color: var(--white);
+    color: var(--ink);
     min-height: 100vh;
   }
 
@@ -40,7 +42,7 @@
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: rgba(255,255,255,0.60);
     margin-bottom: 8px;
   }
   .header h1 {
@@ -48,10 +50,11 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 12px;
+    color: var(--white);
   }
   .header .subtitle {
     font-size: 18px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.60);
     max-width: 700px;
   }
 
@@ -67,7 +70,7 @@
   }
   .persona-field {
     padding: 20px 24px;
-    background: var(--bg);
+    background: var(--white);
   }
   .persona-field label {
     display: block;
@@ -83,6 +86,7 @@
     font-size: 15px;
     font-weight: 500;
     min-height: 36px;
+    color: var(--muted);
   }
 
   /* ── Grid ── */
@@ -98,7 +102,7 @@
 
   .cjm > div {
     padding: 14px 16px;
-    background: var(--bg);
+    background: var(--white);
     min-height: 80px;
   }
 
@@ -106,6 +110,8 @@
   .stage-head {
     text-align: center;
     padding: 16px 14px;
+    background: var(--bg);
+    color: var(--white);
   }
   .stage-head .num {
     font-family: var(--fm);
@@ -113,7 +119,7 @@
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: rgba(255,255,255,0.60);
   }
   .stage-head .name {
     font-size: 17px;
@@ -127,6 +133,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: 14px;
+    background: #F9FAFB;
     font-family: var(--fm);
     font-size: 10px;
     font-weight: 600;
@@ -135,22 +142,9 @@
     color: var(--muted);
   }
 
-  /* Cell content */
-  .cell-content {
-    font-size: 15px;
-    line-height: 1.5;
-    font-weight: 500;
-  }
-  .cell-hint {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* Pain row: red tint */
-  .row-pain {
-    background: rgba(252,165,165,0.10) !important;
-  }
-  .row-pain .row-label { color: var(--red); }
+  /* Pain row */
+  .row-pain { background: var(--red) !important; }
+  .row-pain .row-label { color: var(--red-text); }
 
   /* ── Critical Moments ── */
   .critical {
@@ -164,7 +158,7 @@
   }
   .critical-card {
     padding: 24px;
-    background: var(--bg);
+    background: var(--white);
   }
   .critical-card .label {
     font-family: var(--fm);
@@ -180,6 +174,7 @@
     font-weight: 500;
     line-height: 1.5;
     min-height: 48px;
+    color: var(--muted);
   }
 
   /* ── Improvements ── */
@@ -194,7 +189,7 @@
   }
   .imp-card {
     padding: 24px;
-    background: var(--bg);
+    background: var(--white);
   }
   .imp-card .label {
     font-family: var(--fm);
@@ -210,6 +205,7 @@
     font-weight: 500;
     line-height: 1.5;
     min-height: 40px;
+    color: var(--muted);
   }
 
   /* ── Footer ── */
@@ -218,11 +214,13 @@
     padding: 16px;
     font-family: var(--fm);
     font-size: 11px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.40);
   }
 
   @media print {
-    html, body { background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { background: var(--white); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .stage-head { background: var(--bg) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .row-pain { background: var(--red) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
@@ -261,58 +259,22 @@
     <div class="stage-head"><div class="num">7</div><div class="name">Advocacy</div></div>
 
     <div class="row-label">Touchpoints</div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 
     <div class="row-label">Actions</div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 
     <div class="row-label">Thinking</div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 
     <div class="row-label">Feeling</div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 
     <div class="row-label row-pain">Pain Points</div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
-    <div class="cell-content cell-hint row-pain"></div>
+    <div class="row-pain"></div><div class="row-pain"></div><div class="row-pain"></div><div class="row-pain"></div><div class="row-pain"></div><div class="row-pain"></div><div class="row-pain"></div>
 
     <div class="row-label">Opportunity</div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
-    <div class="cell-content cell-hint"></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div>
   </div>
 
   <div class="critical">
