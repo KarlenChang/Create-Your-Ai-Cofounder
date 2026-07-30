@@ -30,7 +30,48 @@ If the user provides files (interview transcripts, survey data, analytics, suppo
  | **Retention** | What keeps them coming back? What might cause churn? |
  | **Advocacy** | When and why do they recommend the product to others? |
 
-3. **For each stage, document**:
+---
+
+### Step A: Light Map (Touchpoints + Actions Only)
+
+Start here. This is the foundation — get the skeleton down before adding depth.
+
+**Say to the user:**
+> "First, let's just map where your customer shows up and what they do. Don't worry about feelings or problems yet — we'll get to those. Just tell me: for each stage, where do they encounter you, and what action do they take?"
+
+**For each of the 7 stages, ask only two questions:**
+
+1. **Touchpoint** — Where does the customer interact with you? (ad, website, store, referral, app, email, conversation, etc.)
+2. **User action** — What do they actually do? (click, call, visit, sign up, buy, share, etc.)
+
+**Light Map table:**
+
+ | Stage | Touchpoint | User Action |
+ |---|---|---|
+ | **Awareness** | | |
+ | **Consideration** | | |
+ | **Acquisition** | | |
+ | **Onboarding** | | |
+ | **Engagement** | | |
+ | **Retention** | | |
+ | **Advocacy** | | |
+
+**Rules for the agent during Step A:**
+- Keep it fast. One touchpoint and one action per stage is enough.
+- Don't let the user overthink — if they're stuck, suggest a common touchpoint and ask "does that sound right?"
+- If a stage doesn't apply (e.g., no advocacy yet), write "TBD" and move on.
+- Save the light map. This is the skeleton everything else builds on.
+
+---
+
+### Step B: Deep Map (Full Detail)
+
+Now layer on the rest. The light map is the skeleton — this is the meat.
+
+**Say to the user:**
+> "Good — now we know where they show up and what they do. Let's figure out what they're thinking and feeling at each stage, and where things break down."
+
+**For each stage, add these fields:**
 
  - **Touchpoints**: Where the user interacts with the product, brand, or team
  - **User actions**: What they do at this stage
@@ -39,17 +80,23 @@ If the user provides files (interview transcripts, survey data, analytics, suppo
  - **Pain points**: Friction, confusion, drop-off risks
  - **Opportunities**: How to improve the experience at this point
 
-4. **Identify critical moments**:
- - **Aha moment**: When the user first experiences core value
- - **Moments of truth**: Decision points where they commit or abandon
- - **Churn triggers**: Where users most commonly drop off
-
-5. **Create the journey map table**:
+**Full journey map table:**
 
  | Stage | Touchpoint | User Action | Emotion | Pain Point | Opportunity |
  |---|---|---|---|---|---|
 
-6. **Recommend prioritized improvements**:
+---
+
+### Step C: Identify Critical Moments
+
+After the full map is built:
+
+ - **Aha moment**: When the user first experiences core value
+ - **Moments of truth**: Decision points where they commit or abandon
+ - **Churn triggers**: Where users most commonly drop off
+
+### Step D: Recommend Prioritized Improvements
+
  - Which pain points have the highest impact on conversion or retention?
  - What quick wins can improve the experience immediately?
  - What requires deeper investment but has the biggest payoff?
