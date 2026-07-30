@@ -13,11 +13,15 @@
     --ink: #030711;
     --ink-mute: #6B7280;
     --accent: #7DD3E8;
-    --accent-2: #60A5FA;
+    --accent-solid: #B8E9F4;
     --danger: #FCA5A5;
-    --gap: #F59E0B;
-    --gap-soft: rgba(245,158,11,0.08);
-    --rule: rgba(255,255,255,0.15);
+    --danger-bg: rgba(252,165,165,0.15);
+    --danger-border: rgba(252,165,165,0.40);
+    --opp-bg: rgba(125,211,232,0.12);
+    --opp-border: rgba(125,211,232,0.35);
+    --row-alt: rgba(255,255,255,0.03);
+    --rule: rgba(255,255,255,0.25);
+    --rule-strong: rgba(255,255,255,0.40);
     --fd: 'Plus Jakarta Sans', sans-serif;
     --fm: 'JetBrains Mono', monospace;
   }
@@ -37,18 +41,15 @@
     padding: 40px 48px;
   }
 
-  /* Header */
-  .header {
-    margin-bottom: 32px;
-  }
+  /* ── Header ── */
+  .header { margin-bottom: 32px; }
   .header .eyebrow {
     font-family: var(--fm);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0.8;
+    color: var(--accent-solid);
     margin-bottom: 8px;
   }
   .header h1 {
@@ -59,18 +60,18 @@
   }
   .header .subtitle {
     font-size: 18px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.80);
     max-width: 700px;
   }
 
-  /* Persona section */
+  /* ── Persona ── */
   .persona {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
     margin-bottom: 32px;
     padding: 24px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.06);
     border: 1px solid var(--rule);
     border-radius: 8px;
   }
@@ -81,7 +82,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-solid);
     margin-bottom: 6px;
   }
   .persona-field .value {
@@ -89,77 +90,114 @@
     font-weight: 500;
     line-height: 1.4;
     min-height: 48px;
-    padding: 8px 12px;
-    background: rgba(255,255,255,0.03);
-    border: 1px dashed rgba(255,255,255,0.2);
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed var(--rule-strong);
     border-radius: 4px;
+    color: rgba(255,255,255,0.45);
   }
 
-  /* CJM Grid */
+  /* ── CJM Grid ── */
   .cjm-grid {
     display: grid;
-    grid-template-columns: 100px repeat(7, 1fr);
-    gap: 3px;
+    grid-template-columns: 110px repeat(7, 1fr);
+    gap: 0;
     margin-bottom: 40px;
+    border: 2px solid var(--rule-strong);
+    border-radius: 8px;
+    overflow: hidden;
   }
 
-  /* Row labels */
+  /* ── Row labels ── */
   .row-label {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 12px;
+    padding: 14px 14px 14px 12px;
     font-family: var(--fm);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
+    color: #FFFFFF;
+    background: rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--rule);
+    border-right: 2px solid var(--rule-strong);
+  }
+  .row-label.accent-left {
+    border-left: 3px solid var(--accent);
+  }
+  .row-label.danger-left {
+    border-left: 3px solid var(--danger);
+  }
+  .row-label.opp-left {
+    border-left: 3px solid var(--accent);
   }
 
-  /* Stage headers */
+  /* ── Stage headers ── */
   .stage-head {
-    padding: 14px 16px;
-    background: linear-gradient(135deg, rgba(125,211,232,0.22), rgba(125,211,232,0.08));
-    border: 1px solid rgba(125,211,232,0.50);
-    border-radius: 6px;
+    padding: 16px 14px;
+    background: linear-gradient(135deg, rgba(125,211,232,0.30), rgba(125,211,232,0.12));
+    border-bottom: 2px solid var(--rule-strong);
+    border-right: 1px solid var(--rule);
     text-align: center;
   }
+  .stage-head:last-child { border-right: none; }
   .stage-head .num {
     font-family: var(--fm);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0.8;
+    color: #FFFFFF;
+    opacity: 0.9;
   }
   .stage-head .name {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     margin-top: 2px;
+    color: #FFFFFF;
   }
 
-  /* Grid cells */
-  .cell {
-    padding: 12px 14px;
-    border-radius: 4px;
-    border: 1px solid transparent;
-    min-height: 80px;
+  /* ── Corner cell ── */
+  .corner {
+    background: rgba(255,255,255,0.06);
+    border-bottom: 2px solid var(--rule-strong);
+    border-right: 2px solid var(--rule-strong);
   }
+
+  /* ── Grid cells ── */
+  .cell {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.02);
+  }
+  .cell:last-child { border-right: none; }
+  .cjm-grid > .cell:nth-child(8n) { border-right: none; }
+
   .cell-label {
     font-family: var(--fm);
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    margin-bottom: 6px;
-    opacity: 0.6;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.70);
   }
   .cell-content {
     font-size: 15px;
     line-height: 1.5;
     font-weight: 500;
+    flex: 1;
+  }
+  .cell-hint {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
   }
   .cell-content ul {
     list-style: none;
@@ -167,28 +205,36 @@
   }
   .cell-content ul li {
     position: relative;
-    padding-left: 14px;
-    margin-bottom: 3px;
+    padding-left: 16px;
+    margin-bottom: 4px;
   }
   .cell-content ul li:before {
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--accent);
+    color: var(--accent-solid);
     font-weight: 700;
   }
 
-  /* Cell type styles */
-  .cell.touch { background: rgba(255,255,255,0.04); border-color: var(--rule); }
-  .cell.action { background: rgba(255,255,255,0.02); border-color: var(--rule); }
-  .cell.think { background: rgba(255,255,255,0.02); border-color: var(--rule); }
-  .cell.feel { background: rgba(255,255,255,0.02); border-color: var(--rule); }
-  .cell.pain { background: rgba(252,165,165,0.08); border-color: rgba(252,165,165,0.25); }
-  .cell.pain .cell-label { color: var(--danger); }
-  .cell.opp { background: rgba(125,211,232,0.06); border-color: rgba(125,211,232,0.20); }
-  .cell.opp .cell-label { color: var(--accent); }
+  /* ── Row stripe alternation ── */
+  .row-touch { background: rgba(255,255,255,0.00); }
+  .row-action { background: var(--row-alt); }
+  .row-think { background: rgba(255,255,255,0.00); }
+  .row-feel { background: var(--row-alt); }
+  .row-pain { background: var(--danger-bg); }
+  .row-opp { background: var(--opp-bg); }
 
-  /* Critical Moments */
+  /* ── Pain row: warm tint across all cells ── */
+  .row-pain .cell { background: transparent; border-bottom-color: var(--danger-border); }
+  .row-pain .cell-label { color: var(--danger); }
+  .row-pain .cell-content ul li:before { color: var(--danger); }
+
+  /* ── Opportunity row: teal tint across all cells ── */
+  .row-opp .cell { background: transparent; border-bottom-color: var(--opp-border); }
+  .row-opp .cell-label { color: var(--accent-solid); }
+  .row-opp .cell-content ul li:before { color: var(--accent-solid); }
+
+  /* ── Critical Moments ── */
   .critical {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -197,7 +243,7 @@
   }
   .critical-card {
     padding: 20px 24px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.06);
     border: 1px solid var(--rule);
     border-radius: 8px;
   }
@@ -207,7 +253,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-solid);
     margin-bottom: 8px;
   }
   .critical-card .value {
@@ -215,12 +261,13 @@
     font-weight: 500;
     line-height: 1.5;
     min-height: 48px;
+    color: rgba(255,255,255,0.45);
   }
 
-  /* Opportunities */
+  /* ── Opportunities ── */
   .opportunities {
     padding: 24px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.06);
     border: 1px solid var(--rule);
     border-radius: 8px;
     margin-bottom: 32px;
@@ -231,7 +278,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-solid);
     margin-bottom: 16px;
   }
   .opportunities .opp-grid {
@@ -245,28 +292,29 @@
     font-weight: 600;
     letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 4px;
+    color: rgba(255,255,255,0.70);
+    margin-bottom: 6px;
   }
   .opp-item .opp-value {
     font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
     min-height: 40px;
+    color: rgba(255,255,255,0.45);
   }
 
-  /* Footer */
+  /* ── Footer ── */
   .footer {
     text-align: center;
     padding: 16px;
     font-family: var(--fm);
     font-size: 11px;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.50);
   }
 
-  /* Print */
+  /* ── Print ── */
   @media print {
-    html, body { background: var(--bg); }
+    html, body { background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .page { padding: 20px; }
     .cell { min-height: 60px; }
   }
@@ -300,8 +348,8 @@
 
   <!-- CJM Grid -->
   <div class="cjm-grid">
-    <!-- Header row: empty corner + 7 stage headers -->
-    <div></div>
+    <!-- Header row -->
+    <div class="corner"></div>
     <div class="stage-head"><div class="num">Stage 1</div><div class="name">Awareness</div></div>
     <div class="stage-head"><div class="num">Stage 2</div><div class="name">Consideration</div></div>
     <div class="stage-head"><div class="num">Stage 3</div><div class="name">Acquisition</div></div>
@@ -311,64 +359,64 @@
     <div class="stage-head"><div class="num">Stage 7</div><div class="name">Advocacy</div></div>
 
     <!-- Row: Touchpoints -->
-    <div class="row-label">Touchpoints</div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
-    <div class="cell touch"><div class="cell-content"></div></div>
+    <div class="row-label accent-left">Touchpoints</div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. website, ad, referral</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. reviews, demo, call</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. checkout, sign-up form</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. welcome email, setup</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. app, dashboard, emails</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. support, renewal, usage</div></div>
+    <div class="cell row-touch"><div class="cell-hint">e.g. referral, review, share</div></div>
 
     <!-- Row: User Actions -->
     <div class="row-label">Actions</div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
-    <div class="cell action"><div class="cell-content"></div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. googled, asked friend</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. compared, read reviews</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. signed up, paid</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. onboarded, first use</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. daily use, features</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. renewed, upgraded</div></div>
+    <div class="cell row-action"><div class="cell-hint">e.g. referred, reviewed</div></div>
 
     <!-- Row: Thinking -->
     <div class="row-label">Thinking</div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
-    <div class="cell think"><div class="cell-content"></div></div>
+    <div class="cell row-think"><div class="cell-hint">What's on their mind?</div></div>
+    <div class="cell row-think"><div class="cell-hint">What questions do they have?</div></div>
+    <div class="cell row-think"><div class="cell-hint">What are they deciding?</div></div>
+    <div class="cell row-think"><div class="cell-hint">What do they expect?</div></div>
+    <div class="cell row-think"><div class="cell-hint">What keeps them engaged?</div></div>
+    <div class="cell row-think"><div class="cell-hint">Why would they stay?</div></div>
+    <div class="cell row-think"><div class="cell-hint">What would they say?</div></div>
 
     <!-- Row: Feeling -->
     <div class="row-label">Feeling</div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
-    <div class="cell feel"><div class="cell-content"></div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. curious, skeptical</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. cautious, hopeful</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. committed, nervous</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. excited, overwhelmed</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. confident, bored</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. loyal, taken for granted</div></div>
+    <div class="cell row-feel"><div class="cell-hint">e.g. proud, indifferent</div></div>
 
     <!-- Row: Pain Points -->
-    <div class="row-label">Pain Points</div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
-    <div class="cell pain"><div class="cell-content"></div></div>
+    <div class="row-label danger-left">Pain Points</div>
+    <div class="cell row-pain"><div class="cell-hint">Where is the friction?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">What confuses them?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">What almost stops them?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">Where do they get stuck?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">What frustrates them?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">Why might they leave?</div></div>
+    <div class="cell row-pain"><div class="cell-hint">Why wouldn't they share?</div></div>
 
     <!-- Row: Opportunity -->
-    <div class="row-label">Opportunity</div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
-    <div class="cell opp"><div class="cell-content"></div></div>
+    <div class="row-label opp-left">Opportunity</div>
+    <div class="cell row-opp"><div class="cell-hint">How to reach them better?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to build trust?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to reduce friction?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to deliver value faster?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to deepen habit?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to keep them longer?</div></div>
+    <div class="cell row-opp"><div class="cell-hint">How to unlock referrals?</div></div>
   </div>
 
   <!-- Critical Moments -->
