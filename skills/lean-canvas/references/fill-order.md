@@ -2,6 +2,14 @@
 
 Load this when the user needs to create a new Lean Canvas.
 
+## ⚠️ Rules Before You Start
+
+1. **You do NOT know the answers.** The user does. Never generate answers on their behalf.
+2. **Ask ONE question. Then STOP.** Wait for the user to answer before asking the next one.
+3. **Never dump all questions at once.** One at a time, in order.
+4. **If they don't know, write "TBD" and move on.** Don't guess. Don't rephrase your guess as a question.
+5. **Do NOT generate the HTML until all 10 questions are answered.** The canvas comes from their answers, not yours.
+
 ## The Sequence
 
 Tell the user at the start:
