@@ -54,7 +54,11 @@ The user has a canvas and wants to pressure-test it. Load `references/risk-itera
 
 **Flow:**
 1. Load the risk-iteration-path reference
-2. Identify which risk chain to start with (ask the user, or default to Product Risk if they're unsure)
+2. **Explicitly ask which risk chain the user wants to walk.** Present all three options and let them choose. Show the options as a list:
+   - **Product Risk** — "Do I have the right product?" (Problem → Solution → UVP → Key Metrics)
+   - **Customer Risk** — "Can I build a path to customers?" (Segments → Early Adopters → Channels)
+   - **Market Risk** — "Can I make money?" (Alternatives → Revenue → Cost)
+   Ask: "Which chain do you want to pressure-test?" **WAIT for their answer.** Do not pick for them, do not start walking a chain until they have chosen. If they ask which to pick, briefly explain the three options, but the choice is theirs — their instinct about which feels riskiest is the signal.
 3. Walk through the chain step by step, asking probing questions at each box
 4. Output findings as an HTML report or annotated canvas
 5. Save to brain
