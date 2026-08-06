@@ -116,11 +116,40 @@ Now layer on the rest. The light map is the skeleton — this is the meat.
 
 ### Step C: Identify Critical Moments
 
-After the full map is built:
+After the full map is built. **The critical moments come from the user's map — not from you.** You introduce each concept, then ask them to find it in their own journey. One moment type at a time. WAIT after each answer.
 
- - **Aha moment**: When the user first experiences core value
- - **Moments of truth**: Decision points where they commit or abandon
- - **Churn triggers**: Where users most commonly drop off
+**Say to the user:**
+> "We've got the full map. Now let's find the moments that actually decide whether this works. There are three kinds. I'll explain each one — you tell me where it shows up in your map."
+
+**C1 — The Aha moment** (when the customer first experiences the core value)
+
+Explain it: "The aha moment is the first time your customer feels the value you promised — the moment they 'get it.' For the massage therapist, it was the first session where the pain actually moved."
+
+Then **ask**: "Looking at your map — where is that moment for your customer? Which stage, and what exactly happens for them?"
+
+WAIT for their answer. Acknowledge it before moving on ("So the aha is the first session where the pain moved — got it.").
+
+**C2 — Moments of truth** (decision points where they commit or abandon)
+
+Explain it: "Moments of truth are the forks in the road — where the customer decides to go deeper or walk away. Booking the second session. Renewing. Choosing you over the cheaper option."
+
+Then **ask**: "Where are the forks in your map? Where does your customer decide to continue — or leave?"
+
+WAIT for their answer. Acknowledge it.
+
+**C3 — Churn triggers** (where customers most commonly drop off)
+
+Explain it: "Churn triggers are where you actually lose people. For the therapist it was the 60% who never booked Session 3."
+
+Then **ask**: "Where do you lose people in your map? Which stage — and what's happening at that moment?"
+
+WAIT for their answer. Acknowledge it.
+
+**Rules for the agent during Step C:**
+- You introduce the concept. **They find the moment.** The moment comes from their map, never from your imagination.
+- One moment type at a time. Never list all three and ask "which of these apply?"
+- If they're stuck, point back at rows they already gave you in Step A or B — their own words: "You said they book online but never show up — is that the fork?" Never supply a moment they didn't describe.
+- If they genuinely don't know, write "TBD" and move on.
 
 ### Step D: Recommend Prioritized Improvements
 
